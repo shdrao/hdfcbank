@@ -1,12 +1,15 @@
 package com.capgemini.hdfcbank.controller;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.RequestMapping;
+
 @Controller
 public class CustomerController {
 	
-	@RequestMapping("/")
-	public String sayHello() {
+	@RequestMapping("/h")
+	public String saydHello() {
 		return "index";
 	}
 
