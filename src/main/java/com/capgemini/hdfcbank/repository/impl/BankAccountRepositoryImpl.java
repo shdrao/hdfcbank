@@ -1,11 +1,7 @@
 package com.capgemini.hdfcbank.repository.impl;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Repository;
 
 import com.capgemini.hdfcbank.repository.BankAccountRepository;
@@ -13,7 +9,7 @@ import com.capgemini.hdfcbank.repository.BankAccountRepository;
 @Repository
 public class BankAccountRepositoryImpl implements BankAccountRepository {
 
-	@Bean
+	/*@Bean
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
@@ -27,10 +23,11 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
 	public JdbcTemplate getJdbcTemplet() {
 		JdbcTemplate template = new JdbcTemplate(getDataSource());
 		return template;
-	}
+	}*/
 
 	@Autowired
 	private JdbcTemplate templet;
+//	private DataSource dataSource;
 
 	@Override
 	public double getBalance(long accountId) {
