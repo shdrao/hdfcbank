@@ -20,8 +20,11 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
 	@Override
 	public Customer updateAccount(Customer customer) {
-		int count = jdbcTemplate.update("UPDATE * from customers WHERE customer_id=?",
-				new Object[] { customer.getCustomerId() });
+		int count = jdbcTemplate.update("UPDATE customers SET customer_name=?,"
+				+ "customer_email=?,customer_address=?"
+				+ " WHERE customer_id=?",
+				new Object[] { customer.getCustomerName(),customer.getEmailId()
+					,customer.getAddress(),customer.getCustomerId() });
 		if (count != 0)
 			return customer;
 		return null;

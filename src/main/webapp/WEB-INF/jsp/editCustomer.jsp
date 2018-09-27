@@ -19,7 +19,7 @@
         Edit Customer Details
     </div>
     <div class="m-3">
-        <form class="row m-2" action="editprofile.do" method="post">
+        <form class="row m-2" action="editprofile" method="post">
             <div class="col-md-4 form-group">
                 <label for="exampleInputEmail1">Customer ID</label>
                 <input type="number" name="custId" value="${sessionScope.customer.customerId}" readonly class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Account ID">
@@ -34,7 +34,7 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="exampleInputEmail1">Email*</label>
-                <input type="email" name="custEmail" required value="${sessionScope.customer.email}" class="form-control" id="examxpleInputEmai8l1" aria-describedby="emailHelp" placeholder="Email">
+                <input type="email" name="custEmail" required value="${sessionScope.customer.emailId}" class="form-control" id="examxpleInputEmai8l1" aria-describedby="emailHelp" placeholder="Email">
             </div>
             <div class="col-md-4 form-group">
                 <label for="exampleInputEmail1">Address*</label>
