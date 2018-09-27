@@ -31,10 +31,10 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
 
 	@Override
 	public double getBalance(long accountId) {
-		double data = templet.queryForObject("SELECT balance from bankaccounts where account_id=?",
+		double balance = templet.queryForObject("SELECT balance from bankaccounts where account_id=?",
 				new Object[] { accountId }, Double.class);
-		System.out.println(data);
-		return 0;
+	//	System.out.println(data);
+		return balance;
 	}
 
 	@Override

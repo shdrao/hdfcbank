@@ -13,7 +13,7 @@ import com.capgemini.hdfcbank.repository.CustomerRepository;
 
 @Repository
 public class CustomerRepositoryImpl implements CustomerRepository {
-
+// select * from customers inner join bankaccounts on customers.customer_id=bankaccounts.customer_id where customers.customer_id=12345 and customers.customer_password=12;
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
