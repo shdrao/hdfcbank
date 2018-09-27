@@ -19,7 +19,7 @@
         Change Password
     </div>
     <div class="m-3">
-        <form action="changePassword.do" method="post" class="row m-2">
+        <form action="changePassword" method="post" class="row m-2">
             <div class="col-md-4 form-group">
                 <label for="exampleInputEmail1">Old Password*</label>
                 <input type="password" name="oldPassword" class="form-control" required id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Old Password">

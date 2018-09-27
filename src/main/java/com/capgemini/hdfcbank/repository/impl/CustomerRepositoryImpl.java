@@ -52,7 +52,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	@Override
 	public boolean changePassword(Customer customer, String oldPassword, String newPassword) {
 		if (customer.getPassword().equals(oldPassword)) {
-			int count = jdbcTemplate.update("UPDATE customers SET password=? WHERE customer_id=?",
+			int count = jdbcTemplate.update("UPDATE customers SET customer_password=? WHERE customer_id=?",
 					new Object[] { newPassword, customer.getCustomerId() });
 			if (count != 0)
 				return true;

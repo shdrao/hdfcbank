@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,8 +65,29 @@ public class CustomerController {
 		
 		session.setAttribute("customer", customer);
 		return "forward:/editCustomer";
+			
+	}
+	
+	@RequestMapping(value="/editPasswordPage")
+	public String editPasswordPage() {
+		return "changePassword";
+	}
+	
+	@RequestMapping(value="/changePassword")
+	public String editPassword(HttpSession session, @RequestParam String oldPassword, 
+			@RequestParam String newPassword, HttpServletRequest request) {
+		Customer customer=(Customer)session.getAttribute("customer");
+		customerService.changePassword(customer, oldPassword, newPassword);
+		session.setAttribute("customer", customer);
+		request.setAttribute("success", true);
+		return "success";
 		
-		
+	}
+	
+	@RequestMapping(value="/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "index";
 	}
 	
 }

@@ -16,8 +16,8 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent1">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9HIrGt0LaP-dZxOI1dUawb5qRKvP3xEOp_pfrM44AhNf9SlA0kQ" style="width: 90px; height: 70px" >
-        <h2>SAFE BANK</h2>
+        <img src="https://pbs.twimg.com/profile_images/880333363982159872/lA3myMTv_400x400.jpg" style="width: 100px; height: 100px" >
+        <h2>HDFC BANK</h2>
         <marquee>Welcome to safebank net banking... Thank you for choosing us...</marquee>
     </div>
     <div class="d-flex flex-row-reverse">
@@ -68,12 +68,12 @@
                 <a class="nav-link" href="editCustomer">Edit Profile</a>
             </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <li class="nav-item">
-                <a class="nav-link" href="changePassword.jsp">Change Password</a>
+                <a class="nav-link" href="editPasswordPage">Change Password</a>
             </li>
         </ul>
     </div>
     <div class="d-flex flex-row-reverse">
-        <div class="p-2"><a class="btn btn-danger btn-sm" href="logout.do">Logout</a> </div>
+        <div class="p-2"><a class="btn btn-danger btn-sm" href="logout">Logout</a> </div>
         <div class="p-2"><h6 class="p-0 m-1" style="color: white"> Welcome ${sessionScope.customer.customerName}</h6></div>&nbsp;
     </div>
 </nav>
