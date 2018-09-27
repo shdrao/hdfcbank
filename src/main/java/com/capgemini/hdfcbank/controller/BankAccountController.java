@@ -15,10 +15,11 @@ public class BankAccountController {
 	private BankAccountRepository bankAccountRepository;
 	
 
-	@RequestMapping("/")
+	@RequestMapping("/fundtranfer")
 	public String sayHello() {
 		bankAccountRepository.getBalance(221700);
 		System.out.println("jsdakldjaksjdklasjdklj");
+		bankAccountRepository.updateBalance(221700, 200);
 		return "index";
 	}
 	

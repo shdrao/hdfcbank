@@ -1,4 +1,4 @@
-package com.capgemini.hdfcbank.repository.impl;
+package com.capgemini.hdfcbank.repository;
 
 import com.capgemini.hdfcbank.entities.Customer;
 

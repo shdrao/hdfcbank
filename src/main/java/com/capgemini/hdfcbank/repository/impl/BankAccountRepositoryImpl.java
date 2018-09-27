@@ -1,6 +1,5 @@
 package com.capgemini.hdfcbank.repository.impl;
 
-
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,27 +22,28 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
 		dataSource.setPassword("password");
 		return dataSource;
 	}
-	
-	
+
 	@Bean
 	public JdbcTemplate getJdbcTemplet() {
 		JdbcTemplate template = new JdbcTemplate(getDataSource());
 		return template;
 	}
+
 	@Autowired
 	private JdbcTemplate templet;
-  
+
 	@Override
 	public double getBalance(long accountId) {
-		double data = templet.queryForObject("SELECT balance from bankaccounts where account_id=?", new Object[] {accountId}, Double.class);
+		double data = templet.queryForObject("SELECT balance from bankaccounts where account_id=?",
+				new Object[] { accountId }, Double.class);
 		System.out.println(data);
 		return 0;
 	}
 
 	@Override
 	public double updateBalance(long accountId, double balance) {
-		// TODO Auto-generated method stub
-		return 0;
+		templet.update("UPDATE bankaccounts set balance=? where account_id=?", new Object[] { balance, accountId });
+		return getBalance(accountId);
 	}
 
 }
