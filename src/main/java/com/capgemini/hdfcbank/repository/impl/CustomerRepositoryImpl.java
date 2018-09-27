@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.capgemini.hdfcbank.entities.BankAccount;
 import com.capgemini.hdfcbank.entities.Customer;
 import com.capgemini.hdfcbank.repository.CustomerRepository;
 
@@ -58,7 +59,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
 	@Override
 	public Customer authenticateCustomer(Customer customer) {
-		return jdbcTemplate.queryForObject("SELECT * from customers WHERE customer_id=?" + " and customer_password=?",
+		return jdbcTemplate.queryForObject(
+				"select * from customers inner join bankaccounts"
+						+ " on customers.customer_id=bankaccounts.customer_id where "
+						+ "customers.customer_id=? and customers.customer_password=?",
 				new Object[] { customer.getCustomerId(), customer.getPassword() }, new CustomerRowMapper());
 	}
 
@@ -72,6 +76,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 			customer.setEmailId(rs.getString(4));
 			customer.setAddress(rs.getString(5));
 			customer.setDateOfBirth(rs.getDate(6).toLocalDate());
+			customer.setAccount(new BankAccount(rs.getString(8), rs.getDouble(9), rs.getLong(10)));
 			return customer;
 		}
 	}
