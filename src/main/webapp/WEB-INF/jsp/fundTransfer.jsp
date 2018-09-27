@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,14 +19,14 @@
 		<div class="card-header">Transfer Fund</div>
 		<div class="m-3">
 
-			<form action="fundtransfer.do" class="row m-2" method="post">
+			<form action="fundTransfer" class="row m-2" method="post">
 				<!--                 <div class="col-md-4 form-group">
                     <label for="exampleInputEmail1">From Account*</label>
                     <input type="number" name="fromAccount" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Account ID">
                 </div> -->
                 <div class="col-md-4 form-group">
-					<label for="exampleInputEmail1">Beneficiary Account*</label> <input
-						type="number" name="fromAcc" class="form-control" required
+					<label for="exampleInputEmail1">From Account*</label> <input
+						type="number" name="fromAcc" value="${sessionScope.customer.account.accountId}" class="form-control" required
 						id="exampleInputEmail81" aria-describedby="emailHelp"
 						placeholder="Account ID">
 				</div>

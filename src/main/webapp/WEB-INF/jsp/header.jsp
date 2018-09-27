@@ -62,7 +62,7 @@
                 <a class="nav-link" href="account">Accounts <span class="sr-only">(current)</span></a>
             </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <li class="nav-item">
-                <a class="nav-link" href="fundTransfer.jsp">Fund Transfer</a>
+                <a class="nav-link" href="fundtransferPage">Fund Transfer</a>
             </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <li class="nav-item">
                 <a class="nav-link" href="editCustomer">Edit Profile</a>
