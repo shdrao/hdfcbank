@@ -37,7 +37,7 @@
                         <th scope="row">${sessionScope.customer.customerId }</th>
                         <td>${sessionScope.customer.customerName }</td>
                         <td>${sessionScope.customer.dateOfBirth }</td>
-                        <td style="font-size: 14px">${sessionScope.customer.email }</td>
+                        <td style="font-size: 14px">${sessionScope.customer.emailId }</td>
                         <td style="font-size: 14px">${sessionScope.customer.address }</td>
                     </tr>
                     </tbody>
@@ -68,7 +68,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-5 mt-5 ml-0" >
+    <div class="col-md-5 mt-5 ml-0" hidden>
         <div class="card">
             <div class="card-header">
                 Transaction Details

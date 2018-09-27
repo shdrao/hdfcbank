@@ -76,7 +76,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 			customer.setEmailId(rs.getString(4));
 			customer.setAddress(rs.getString(5));
 			customer.setDateOfBirth(rs.getDate(6).toLocalDate());
-			customer.setAccount(new BankAccount(rs.getString(8), rs.getDouble(9), rs.getLong(10)));
+			customer.setAccount(new BankAccount(rs.getLong(8), rs.getDouble(10), rs.getString(9)));
 			return customer;
 		}
 	}

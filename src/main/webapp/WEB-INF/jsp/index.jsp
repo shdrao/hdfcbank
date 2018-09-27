@@ -28,7 +28,7 @@
 						and typesetting industry. Lorem Ipsum has been the industry's
 						standard dummy text ever survived not only five was popularised in
 					</p>
-					<form action="login.do" method="post">
+					<form action="login" method="post">
 						<div class="form-group input-group-md">
 							<label for="exampleInputEmail1">Customer ID</label> <input
 								type="number" name="custId" class="form-control"

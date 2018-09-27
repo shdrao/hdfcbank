@@ -24,9 +24,15 @@
                     <label for="exampleInputEmail1">From Account*</label>
                     <input type="number" name="fromAccount" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Account ID">
                 </div> -->
+                <div class="col-md-4 form-group">
+					<label for="exampleInputEmail1">Beneficiary Account*</label> <input
+						type="number" name="fromAcc" class="form-control" required
+						id="exampleInputEmail81" aria-describedby="emailHelp"
+						placeholder="Account ID">
+				</div>
 				<div class="col-md-4 form-group">
 					<label for="exampleInputEmail1">Beneficiary Account*</label> <input
-						type="number" name="toAccount" class="form-control" required
+						type="number" name="toAcc" class="form-control" required
 						id="exampleInputEmail81" aria-describedby="emailHelp"
 						placeholder="Account ID">
 				</div>
