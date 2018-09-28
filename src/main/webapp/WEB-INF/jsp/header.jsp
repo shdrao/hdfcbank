@@ -17,6 +17,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent1">
         <img src="https://pbs.twimg.com/profile_images/880333363982159872/lA3myMTv_400x400.jpg" style="width: 100px; height: 100px" >
+        
         <h2>HDFC BANK</h2>
         <marquee>Welcome to safebank net banking... Thank you for choosing us...</marquee>
     </div>
@@ -78,7 +79,10 @@
     </div>
 </nav>
 </c:if>
+<div>
+<marquee direction="right" behavior="alternate"><img src="https://www.chatmeter.com/wp-content/uploads/2018/09/BLOG-44.png" style="width: 300px; height: 100px"  align="middle"></marquee>
 
+</div>
 
 </body>
 </html>
