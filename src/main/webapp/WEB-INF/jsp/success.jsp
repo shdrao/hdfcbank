@@ -23,7 +23,7 @@
             <h4 class="alert-heading">Your request Completed</h4>
             <p>Your request has been completed succesfully. Thank u for using this service... </p>
             <hr>
-            <p class="mb-0">Are u done,.. Please <a href="account.do">click here</a> to go Home.... </p>
+            <p class="mb-0">Are u done,.. Please <a href="account">click here</a> to go Home.... </p>
         </div>
         </c:if>
          <c:if test="${requestScope.success == false}">
@@ -31,7 +31,7 @@
             <h4 class="alert-heading">Your request not completed</h4>
             <p>Error:=    ${requestScope.error} </p>
             <hr>
-            <p class="mb-0">Are u done,.. Please <a href="account.do">click here</a> to go Home.... </p>
+            <p class="mb-0">Are u done,.. Please <a href="account">click here</a> to go Home.... </p>
         </div>
         </c:if>
     </div>
