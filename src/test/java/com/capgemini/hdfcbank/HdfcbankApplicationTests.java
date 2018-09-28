@@ -15,10 +15,10 @@ public class HdfcbankApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		
 		CustomerController customerController=new CustomerController();
 		String result= customerController.editPasswordPage();
 		assertEquals(result, "changePassword");
+		
 	}
 
 }

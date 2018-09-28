@@ -23,20 +23,19 @@ public class BankAccountController {
 	@Autowired
 	private BankAccountService bankAccountService;
 
-	@RequestMapping(value="/fundtransferPage", method=RequestMethod.GET)
+	@RequestMapping(value = "/fundtransferPage", method = RequestMethod.GET)
 	public String getfundTransferPage(HttpSession session, HttpServletRequest request, Model model) {
 		session = request.getSession();
 		Customer customer = (Customer) session.getAttribute("customer");
 		model.addAttribute("account", customer.getAccount());
 		return "fundTransfer";
 	}
-	
-	
-	@RequestMapping(value="/fundTransfer", method=RequestMethod.POST)
-	public String transferFund(@RequestParam long fromAcc, @RequestParam long toAcc, @RequestParam long amount, Model model) {
+
+	@RequestMapping(value = "/fundTransfer", method = RequestMethod.POST)
+	public String transferFund(@RequestParam long fromAcc, @RequestParam long toAcc, @RequestParam long amount,
+			Model model) {
 		bankAccountService.fundTransfer(fromAcc, toAcc, amount);
 		model.addAttribute("success", true);
 		return "success";
 	}
-
 }
