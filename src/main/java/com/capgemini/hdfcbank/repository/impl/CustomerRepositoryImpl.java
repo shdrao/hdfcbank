@@ -61,7 +61,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	public boolean changePassword(Customer customer, String oldPassword, String newPassword)
 			throws DataAccessException {
 		try {
-			jdbcTemplate.update("UPDATE customers SET customer_password=? WHERE customer_id=? AND customer_password=?",
+			int i=jdbcTemplate.update("UPDATE customers SET customer_password=? WHERE customer_id=? AND customer_password=?",
 					new Object[] { newPassword, customer.getCustomerId(), customer.getPassword() });
 			return true;
 

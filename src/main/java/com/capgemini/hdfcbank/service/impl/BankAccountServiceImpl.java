@@ -17,11 +17,9 @@ public class BankAccountServiceImpl implements BankAccountService {
 	@Override
 	public double getBalance(long accountId) {
 		
-		try {
+	
 			return bankAccountRepository.getBalance(accountId);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		
 		
 	}
 
