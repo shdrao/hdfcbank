@@ -29,7 +29,7 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
 //	private DataSource dataSource;
 
 	@Override
-	public double getBalance(long accountId) {
+	public double getBalance(long accountId){
 		double balance = templet.queryForObject("SELECT balance from bankaccounts where account_id=?",
 				new Object[] { accountId }, Double.class);
 		// System.out.println(data);

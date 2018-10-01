@@ -40,7 +40,7 @@ public class TestClass {
 
 		when(customerRepository.authenticateCustomer(customer)).thenReturn(customer1);
 
-//		CustomerController sc= customerController.checking(null, null, null, 0, null);
+		//CustomerController sc= customerController.checking(null, null, null, 0, null);
 		
 		assertEquals(customer1, customerRepository.authenticateCustomer(customer));
 
