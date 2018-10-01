@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.capgemini.hdfcbank.entities.Customer;
 import com.capgemini.hdfcbank.exceptions.LowBalanceException;
+import com.capgemini.hdfcbank.exceptions.PasswordChangeFailedException;
+import com.capgemini.hdfcbank.exceptions.UpdationFailedException;
 import com.capgemini.hdfcbank.exceptions.UserNotFoundException;
 import com.capgemini.hdfcbank.repository.CustomerRepository;
 import com.capgemini.hdfcbank.service.CustomerService;
@@ -17,9 +19,17 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerRepository customerRepository;
 
 	@Override
-	public Customer updateAccount(Customer customer) {
+	public Customer updateAccount(Customer customer) throws UpdationFailedException {
 
-		return customerRepository.updateAccount(customer);
+		try {
+			return customerRepository.updateAccount(customer);
+		} catch (DataAccessException e) {
+			UpdationFailedException updationFailedException = new UpdationFailedException(
+					"failed to update the customer details");
+			updationFailedException.initCause(e);
+			throw updationFailedException;
+		}
+
 	}
 
 	@Override
@@ -35,9 +45,17 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public boolean changePassword(Customer customer, String oldPassword, String newPassword) {
+	public boolean changePassword(Customer customer, String oldPassword, String newPassword)
+			throws PasswordChangeFailedException {
+		try {
+			return customerRepository.changePassword(customer, oldPassword, newPassword);
+		} catch (DataAccessException e) {
+			PasswordChangeFailedException passwordChangeFailedException = new PasswordChangeFailedException(
+					"Failed to change the password");
+			passwordChangeFailedException.initCause(e);
+			throw e;
+		}
 
-		return customerRepository.changePassword(customer, oldPassword, newPassword);
 	}
 
 	@Override

@@ -22,15 +22,20 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	private JdbcTemplate jdbcTemplate;
 
 	@Override
-	public Customer updateAccount(Customer customer) {
-		int count = jdbcTemplate.update("UPDATE customers SET customer_name=?,"
-				+ "customer_email=?,customer_address=?"
-				+ " WHERE customer_id=?",
-				new Object[] { customer.getCustomerName(),customer.getEmailId()
-					,customer.getAddress(),customer.getCustomerId() });
-		if (count != 0)
+	public Customer updateAccount(Customer customer) throws DataAccessException {
+
+		try {
+			jdbcTemplate.update(
+					"UPDATE customers SET customer_name=?," + "customer_email=?,customer_address=?"
+							+ " WHERE customer_id=?",
+					new Object[] { customer.getCustomerName(), customer.getEmailId(), customer.getAddress(),
+							customer.getCustomerId() });
 			return customer;
-		return null;
+		} catch (DataAccessException e) {
+			e.initCause(new EmptyResultDataAccessException(1));
+			throw e;
+		}
+
 	}
 
 	@Override
@@ -53,29 +58,32 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	}
 
 	@Override
-	public boolean changePassword(Customer customer, String oldPassword, String newPassword) {
-		if (customer.getPassword().equals(oldPassword)) {
-			int count = jdbcTemplate.update("UPDATE customers SET customer_password=? WHERE customer_id=?",
-					new Object[] { newPassword, customer.getCustomerId() });
-			if (count != 0)
-				return true;
+	public boolean changePassword(Customer customer, String oldPassword, String newPassword)
+			throws DataAccessException {
+		try {
+			jdbcTemplate.update("UPDATE customers SET customer_password=? WHERE customer_id=? AND customer_password=?",
+					new Object[] { newPassword, customer.getCustomerId(), customer.getPassword() });
+			return true;
+
+		} catch (DataAccessException e) {
+			e.initCause(new EmptyResultDataAccessException(1));
+			throw e;
 		}
-		return false;
 	}
 
 	@Override
 	public Customer authenticateCustomer(Customer customer) throws DataAccessException {
 		try {
-		return jdbcTemplate.queryForObject(
-				"select * from customers inner join bankaccounts"
-						+ " on customers.customer_id=bankaccounts.customer_id where "
-						+ "customers.customer_id=? and customers.customer_password=?",
-				new Object[] { customer.getCustomerId(), customer.getPassword() }, new CustomerRowMapper());
-		
+			return jdbcTemplate.queryForObject(
+					"select * from customers inner join bankaccounts"
+							+ " on customers.customer_id=bankaccounts.customer_id where "
+							+ "customers.customer_id=? and customers.customer_password=?",
+					new Object[] { customer.getCustomerId(), customer.getPassword() }, new CustomerRowMapper());
+
 		} catch (DataAccessException e) {
-			
-			e.initCause(new EmptyResultDataAccessException("Expected 1 actual 0 ", 1));
-			//System.out.println("repo    "+ e.getCause());
+
+			e.initCause(new EmptyResultDataAccessException("Empty", 1));
+			// System.out.println("repo "+ e.getCause());
 			throw e;
 		}
 	}

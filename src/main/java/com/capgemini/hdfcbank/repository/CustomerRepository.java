@@ -7,10 +7,10 @@ import com.capgemini.hdfcbank.exceptions.LowBalanceException;
 
 public interface CustomerRepository {
 
-	public Customer updateAccount(Customer customer);
+	public Customer updateAccount(Customer customer) throws DataAccessException;
 	public Customer addCustomer(Customer customer);
 	public boolean deleteCustomer(long customerId);
-	public boolean changePassword(Customer customer, String oldPassword, String newPassword);
+	public boolean changePassword(Customer customer, String oldPassword, String newPassword) throws DataAccessException;
 	public Customer authenticateCustomer(Customer customer) throws DataAccessException;
 	
 }

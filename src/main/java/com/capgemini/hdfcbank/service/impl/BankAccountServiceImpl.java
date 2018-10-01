@@ -1,6 +1,7 @@
 package com.capgemini.hdfcbank.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.hdfcbank.exceptions.LowBalanceException;
@@ -15,7 +16,13 @@ public class BankAccountServiceImpl implements BankAccountService {
 
 	@Override
 	public double getBalance(long accountId) {
-		return bankAccountRepository.getBalance(accountId);
+		
+		try {
+			return bankAccountRepository.getBalance(accountId);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 
 	@Override

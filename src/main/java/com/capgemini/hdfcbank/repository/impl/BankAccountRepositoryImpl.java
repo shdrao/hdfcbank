@@ -29,28 +29,28 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
 //	private DataSource dataSource;
 
 	@Override
-	public double getBalance(long accountId){
-		double balance = templet.queryForObject("SELECT balance from bankaccounts where account_id=?",
-				new Object[] { accountId }, Double.class);
-		// System.out.println(data);
-		return balance;
+	public double getBalance(long accountId) throws DataAccessException {
+		try {
+			double balance = templet.queryForObject("SELECT balance from bankaccounts where account_id=?",
+					new Object[] { accountId }, Double.class);
+			return balance;
+		} catch (DataAccessException e) {
+			e.initCause(new EmptyResultDataAccessException("Expected 1 actual 0", 1));
+			throw e;
+		}
 	}
 
 	@Override
-	public double updateBalance(long accountId, double balance) throws LowBalanceException {
+	public double updateBalance(long accountId, double balance) throws DataAccessException {
 		try {
-			int result = templet.update("UPDATE bankaccounts set balance=? where account_id=?",
-					new Object[] { balance, accountId });
-			System.out.println(result);
-			if (result == 1) {
-				return getBalance(accountId);
-			}
+			templet.update("UPDATE bankaccounts set balance=? where account_id=?", new Object[] { balance, accountId });
+			// System.out.println(result);
+
+			return getBalance(accountId);
 
 		} catch (DataAccessException e) {
-			
+			e.initCause(new EmptyResultDataAccessException("Expected 1 actual 0", 1));
+			throw e;
 		}
-
-		throw new LowBalanceException("No account found");
 	}
-
 }
