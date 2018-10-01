@@ -25,8 +25,6 @@ public class HdfcbankApplicationTests {
 		assertEquals(result, "changePassword");
 		
 
-		String res=customerController.editProfilePage();
-		assertEquals(res, "editCustomer");
 	
 	}
 	
