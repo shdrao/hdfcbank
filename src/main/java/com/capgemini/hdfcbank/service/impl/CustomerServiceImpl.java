@@ -1,11 +1,15 @@
 package com.capgemini.hdfcbank.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.hdfcbank.entities.Customer;
+import com.capgemini.hdfcbank.exceptions.LowBalanceException;
+import com.capgemini.hdfcbank.exceptions.UserNotFoundException;
 import com.capgemini.hdfcbank.repository.CustomerRepository;
 import com.capgemini.hdfcbank.service.CustomerService;
+
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
@@ -26,20 +30,27 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public boolean deleteCustomer(long customerId) {
-		
+
 		return customerRepository.deleteCustomer(customerId);
 	}
 
 	@Override
 	public boolean changePassword(Customer customer, String oldPassword, String newPassword) {
-		
+
 		return customerRepository.changePassword(customer, oldPassword, newPassword);
 	}
 
 	@Override
-	public Customer authenticateCustomer(Customer customer) {
-		
-		return customerRepository.authenticateCustomer(customer);
+	public Customer authenticateCustomer(Customer customer) throws UserNotFoundException {
+
+		try {
+			return customerRepository.authenticateCustomer(customer);
+		} catch (DataAccessException e) {
+			UserNotFoundException u = new UserNotFoundException("No user Found");
+			u.initCause(e);
+			throw u;
+		}
+
 	}
 
 }

@@ -1,8 +1,8 @@
 package com.capgemini.hdfcbank.exceptions;
 
-public class LowBalanceException extends RuntimeException {
+public class UserNotFoundException extends RuntimeException { 
 
-	public LowBalanceException(String message) {
+	public UserNotFoundException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}

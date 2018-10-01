@@ -28,7 +28,7 @@ public class BankAccountServiceImpl implements BankAccountService {
 	}
 
 	@Override
-	public double deposit(long accountId, double balance) throws LowBalanceException {
+	public double deposit(long accountId, double balance) {
 		double newBalance = getBalance(accountId) + balance;
 		return bankAccountRepository.updateBalance(accountId, newBalance);
 	}
@@ -36,15 +36,11 @@ public class BankAccountServiceImpl implements BankAccountService {
 	@Override
 	public boolean fundTransfer(long fromAcc, long toAcc, double balance) {
 		getBalance(toAcc);
-		try {
-			withdraw(fromAcc, balance);
-			deposit(toAcc, balance);
-			return true;
-		} catch (LowBalanceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
+
+		withdraw(fromAcc, balance);
+		deposit(toAcc, balance);
+		return true;
+
 	}
 
 }

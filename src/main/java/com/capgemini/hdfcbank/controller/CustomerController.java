@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.capgemini.hdfcbank.entities.Customer;
+import com.capgemini.hdfcbank.exceptions.UserNotFoundException;
 import com.capgemini.hdfcbank.service.CustomerService;
 
 @Controller
@@ -35,10 +36,9 @@ public class CustomerController {
 			model.addAttribute("customer", customer);
 			session.setAttribute("customer", customer);
 			return "accountDetails";
-		} else {
-			request.setAttribute("success", false);
 		}
 		return "index";
+
 	}
 
 	@RequestMapping(value = "/account")

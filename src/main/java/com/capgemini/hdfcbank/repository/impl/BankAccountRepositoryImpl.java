@@ -46,10 +46,8 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
 				return getBalance(accountId);
 			}
 
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e.getMessage());
-			return 0;
+		} catch (DataAccessException e) {
+			
 		}
 
 		throw new LowBalanceException("No account found");
