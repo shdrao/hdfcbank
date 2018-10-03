@@ -75,13 +75,13 @@
 				<form:label path="customerId">Customer ID</form:label>
 				<form:input path="customerId" readonly="readonly" />
 
-				<form:label path="customerName">Customer ID</form:label>
+				<form:label path="customerName">Customer Name</form:label>
 				<form:input path="customerName" readonly="readonly" />
 
-				<form:label path="dateOfBirth">Customer ID</form:label>
+				<form:label path="dateOfBirth">Date of Birth</form:label>
 				<form:input type="date" path="dateOfBirth" readonly="readonly" />
 
-				<form:label path="address">Customer ID</form:label>
+				<form:label path="address">Address</form:label>
 				<form:input path="address" readonly="readonly" />
 
 				<input type="submit" name="submit">

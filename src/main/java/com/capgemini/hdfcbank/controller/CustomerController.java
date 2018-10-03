@@ -21,7 +21,7 @@ import com.capgemini.hdfcbank.exceptions.UserNotFoundException;
 import com.capgemini.hdfcbank.service.CustomerService;
 
 @Controller
-@SessionAttributes
+@SessionAttributes("customers")
 public class CustomerController {
 
 	@Autowired
@@ -42,7 +42,7 @@ public class CustomerController {
 
 		if (customer.getEmailId() != null) {
 			model.addAttribute("customer", customer);
-//			session.setAttribute("customer", customer);
+			session.setAttribute("customer", customer);
 			return "accountDetails";
 		}
 		return "index";
@@ -113,9 +113,10 @@ public class CustomerController {
 
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session, HttpServletRequest request) {
+		session=request.getSession();
 		session.invalidate();
 		request.setAttribute("logout", true);
-		return "index";
+		return "redirect:/";
 	}
 
 }
