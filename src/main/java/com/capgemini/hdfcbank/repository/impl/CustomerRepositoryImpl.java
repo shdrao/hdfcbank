@@ -26,9 +26,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
 		try {
 			jdbcTemplate.update(
-					"UPDATE customers SET customer_name=?," + "customer_email=?,customer_address=?"
+					"UPDATE customers SET customer_name=?," + "customer_address=?"
 							+ " WHERE customer_id=?",
-					new Object[] { customer.getCustomerName(), customer.getEmailId(), customer.getAddress(),
+					new Object[] { customer.getCustomerName(),  customer.getAddress(),
 							customer.getCustomerId() });
 			return customer;
 		} catch (DataAccessException e) {

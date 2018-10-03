@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
@@ -28,17 +28,19 @@
 						and typesetting industry. Lorem Ipsum has been the industry's
 						standard dummy text ever survived not only five was popularised in
 					</p>
-					<form action="login" method="post">
+					<form:form modelAttribute="customer" action="login" method="post" >
+					
+					
 						<div class="form-group input-group-md">
-							<label for="exampleInputEmail1">Customer ID</label> <input
+							<label for="exampleInputEmail1">Customer ID</label> <form:input
 								type="number" name="custId" class="form-control"
 								id="exampleInputEmail1" aria-describedby="emailHelp"
-								placeholder="Coustomer ID">
+								placeholder="Coustomer ID" path="customerId"/>
 						</div>
 						<div class="form-group input-group-md">
-							<label for="exampleInputPassword1">Password</label> <input
+							<label for="exampleInputPassword1">Password</label> <form:input
 								type="password" name="password" class="form-control"
-								id="exampleInputPassword1" placeholder="Password">
+								id="exampleInputPassword1" placeholder="Password" path="password"/>
 						</div>
 						<button type="submit" class="btn btn-primary btn-sm btn-block">Submit</button>
 						<br>
@@ -52,7 +54,8 @@
 								<b>Successfully Logged out!!</b>
 							</div>
 						</c:if>
-					</form>
+					
+					</form:form>
 				</div>
 			</div>
 		</div>

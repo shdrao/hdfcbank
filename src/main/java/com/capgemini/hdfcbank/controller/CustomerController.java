@@ -14,27 +14,35 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.capgemini.hdfcbank.entities.Customer;
 import com.capgemini.hdfcbank.exceptions.UserNotFoundException;
 import com.capgemini.hdfcbank.service.CustomerService;
 
 @Controller
+@SessionAttributes
 public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
 
+	
+	@RequestMapping(value="/")
+	public String abc(@ModelAttribute Customer customer, Model model) {
+		model.addAttribute("customer",new Customer());
+		return "index";
+	}
+	
 	@RequestMapping(value = "/login")
-	public String checking(Model model, HttpServletRequest request, HttpSession session, @RequestParam long custId,
-			@RequestParam String password) {
-		Customer customer = new Customer(null, custId, null, null, password, null, null);
+	public String checking(Model model, HttpSession session, @ModelAttribute Customer customer ) {
+		
 
 		customer = customerService.authenticateCustomer(customer);
 
 		if (customer.getEmailId() != null) {
 			model.addAttribute("customer", customer);
-			session.setAttribute("customer", customer);
+//			session.setAttribute("customer", customer);
 			return "accountDetails";
 		}
 		return "index";
@@ -42,7 +50,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/account")
-	public String viewAccount(Model model, HttpSession session) {
+	public String viewAccount() {
 		return "accountDetails";
 	}
 
